@@ -21,6 +21,6 @@ public class UserReq {
     @NotBlank(message = "Email is required")
     private String email;
     private String full_name;
-    @NotBlank(message = "Role is required")
-    private Role role;
+
+    private String role;
 }
