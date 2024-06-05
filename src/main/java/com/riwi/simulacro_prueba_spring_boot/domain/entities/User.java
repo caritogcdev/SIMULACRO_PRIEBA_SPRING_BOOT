@@ -7,7 +7,7 @@ import lombok.*;
 import java.util.List;
 
 @Entity(name = "user") //Nombre en la DB
-@Data
+@Data // Esta anotación trae: get, set, toString, equal hashCode
 @Builder // Patrón de diseño para crear clases
 /**
  * Sin el patrón de diseño builder, las clases se crean de la
@@ -28,10 +28,10 @@ import java.util.List;
 public class User {
     @Id // Especificando la primary key
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String user_id;
+    private String id;
     @Column(length = 50, nullable = false, unique = true)
     private String username;
-    @Column(length = 254, nullable = false)
+    @Column(nullable = false)
     private String password;
     @Column(length = 100, nullable = false)
     private String email;
@@ -58,12 +58,14 @@ public class User {
     @OneToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER, //El EAGER es para que venga con el join implícito. El EAGER se utiliza en la relación fuerte. // Puede ser EAGER o LAZY, pero como queremos que nos traiga toda la lista, queremos que venga con el join de una vez, entonces lo dejamos como EAGER
-            mappedBy = "user", // mappedBy es el nombre de quien lo está mapeando a él en la otra clase
+            mappedBy = "userId", // mappedBy es el nombre de quien lo está mapeando a él en la otra clase
             orphanRemoval = false
     )
     private List<Enrollment> enrollments; // Es una lista porque es de uno a muchos
 
     // De 1 a Muchos con course
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER, // Puede ser EAGER o LAZY, pero como queremos que nos traiga toda la lista, queremos que venga con el join de una vez, entonces lo dejamos como EAGER
@@ -73,28 +75,34 @@ public class User {
     private List<Course> courses;
 
     // De 1 a Muchos message sender
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER, // Puede ser EAGER o LAZY, pero como queremos que nos traiga toda la lista, queremos que venga con el join de una vez, entonces lo dejamos como EAGER
             mappedBy = "userSender", // mappedBy es el nombre de quien lo está mapeando a él en la otra clase
             orphanRemoval = false
     )
-    private List<Message> messageSender;
+    private List<Message> messagesSender;
 
     // De 1 a Muchos message receiver
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER, // Puede ser EAGER o LAZY, pero como queremos que nos traiga toda la lista, queremos que venga con el join de una vez, entonces lo dejamos como EAGER
             mappedBy = "userReceiver", // mappedBy es el nombre de quien lo está mapeando a él en la otra clase
             orphanRemoval = false
     )
-    private List<Message> messageReceiver;
+    private List<Message> messagesReceiver;
 
     // De 1 a muchos submissions
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER, // Puede ser EAGER o LAZY, pero como queremos que nos traiga toda la lista, queremos que venga con el join de una vez, entonces lo dejamos como EAGER
-            mappedBy = "user", // mappedBy es el nombre de quien lo está mapeando a él en la otra clase
+            mappedBy = "userId", // mappedBy es el nombre de quien lo está mapeando a él en la otra clase
             orphanRemoval = false
     )
     private List<Submission> submissions;

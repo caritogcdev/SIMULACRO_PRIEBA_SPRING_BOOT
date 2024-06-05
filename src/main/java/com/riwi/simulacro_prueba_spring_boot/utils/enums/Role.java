@@ -15,6 +15,7 @@ package com.riwi.simulacro_prueba_spring_boot.utils.enums;
  * TEACHER=("TEACHER")
  * */
 public enum Role {
+    ADMIN,
     STUDENT,
-    TEACHER
+    INSTRUCTOR
 }
