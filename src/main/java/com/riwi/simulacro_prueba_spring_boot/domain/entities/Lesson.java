@@ -3,6 +3,7 @@ package com.riwi.simulacro_prueba_spring_boot.domain.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "lesson") //Nombre en la DB
@@ -36,5 +37,6 @@ public class Lesson {
             mappedBy = "lessonId",
             orphanRemoval = false
     )
-    private List<Assignment> assignments;
+    @Builder.Default
+    private List<Assignment> assignments = new ArrayList<>();
 }

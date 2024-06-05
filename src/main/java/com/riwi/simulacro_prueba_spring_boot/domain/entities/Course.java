@@ -3,6 +3,7 @@ package com.riwi.simulacro_prueba_spring_boot.domain.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "course") //Nombre en la DB
@@ -36,7 +37,8 @@ public class Course {
             mappedBy = "courseId", // mappedBy es el nombre de quien lo está mapeando a él en la otra clase
             orphanRemoval = false
     )
-    private List<Enrollment> enrollments;
+    @Builder.Default
+    private List<Enrollment> enrollments = new ArrayList<>();
 
     //Relación de 1 a muchos con messages
     @ToString.Exclude
@@ -47,7 +49,8 @@ public class Course {
             mappedBy = "courseId", // mappedBy es el nombre de quien lo está mapeando a él en la otra clase
             orphanRemoval = false
     )
-    private List<Message> messages;
+    @Builder.Default
+    private List<Message> messages = new ArrayList<>();
 
     //Relación de 1 a muchos con lesson
     @ToString.Exclude
@@ -58,6 +61,7 @@ public class Course {
             mappedBy = "courseId", // mappedBy es el nombre de quien lo está mapeando a él en la otra clase
             orphanRemoval = false // Si se elimina esto, también se eliminan todas las submissions de esto
     )
-    private List<Lesson> lessons;
+    @Builder.Default
+    private List<Lesson> lessons = new ArrayList<>();
 
 }

@@ -1,12 +1,20 @@
 package com.riwi.simulacro_prueba_spring_boot.api.dto.request;
 
-import java.time.LocalDate;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class MessageReq {
-    // private Long message_id;
-    private Long receiver_id;
-    private Long sender_id;
-    private Long course_id;
+    @NotBlank(message = "User sender is required")
+    private String userSender;
+    private String userReceiver;
+    private Long courseId;
+    @NotBlank(message = "Message content is required")
     private String message_content;
-    private LocalDate sent_date;
 }

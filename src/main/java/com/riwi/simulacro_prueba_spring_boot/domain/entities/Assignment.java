@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "assignment") //Nombre en la DB
@@ -41,6 +42,7 @@ public class Assignment {
             mappedBy = "assignmentId", // mappedBy es el nombre de quien lo está mapeando a él en la otra clase
             orphanRemoval = false // Si se elimina esto, también se eliminan todas las submissions de esto
     )
-    private List<Submission> submissions;
+    @Builder.Default
+    private List<Submission> submissions = new ArrayList<>();
 
 }

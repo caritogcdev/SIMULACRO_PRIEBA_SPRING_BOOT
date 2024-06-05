@@ -4,6 +4,7 @@ import com.riwi.simulacro_prueba_spring_boot.utils.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "user") //Nombre en la DB
@@ -61,7 +62,16 @@ public class User {
             mappedBy = "userId", // mappedBy es el nombre de quien lo está mapeando a él en la otra clase
             orphanRemoval = false
     )
-    private List<Enrollment> enrollments; // Es una lista porque es de uno a muchos
+    /** Inicializamos las listas desde aquí para evitar errores
+     * Aunque también se pueden inicializar en el servicio como
+     * lo hemos estado viendo en clase.
+     *
+     * Se le dice al builder que lo ignore con @Builder.Default
+     * para inicializar las listas vacías y evitar futuros errores
+     * y no tener que inicializarlas después sino ya desde la creación
+     * de la entidad */
+    @Builder.Default
+    private List<Enrollment> enrollments = new ArrayList<>(); // Es una lista porque es de uno a muchos
 
     // De 1 a Muchos con course
     @ToString.Exclude
@@ -72,7 +82,8 @@ public class User {
             mappedBy = "userInstructor", // mappedBy es el nombre de quien lo está mapeando a él en la otra clase
             orphanRemoval = false
     )
-    private List<Course> courses;
+    @Builder.Default
+    private List<Course> courses = new ArrayList<>();
 
     // De 1 a Muchos message sender
     @ToString.Exclude
@@ -83,7 +94,8 @@ public class User {
             mappedBy = "userSender", // mappedBy es el nombre de quien lo está mapeando a él en la otra clase
             orphanRemoval = false
     )
-    private List<Message> messagesSender;
+    @Builder.Default
+    private List<Message> messagesSender = new ArrayList<>();
 
     // De 1 a Muchos message receiver
     @ToString.Exclude
@@ -94,7 +106,8 @@ public class User {
             mappedBy = "userReceiver", // mappedBy es el nombre de quien lo está mapeando a él en la otra clase
             orphanRemoval = false
     )
-    private List<Message> messagesReceiver;
+    @Builder.Default
+    private List<Message> messagesReceiver = new ArrayList<>();
 
     // De 1 a muchos submissions
     @ToString.Exclude
@@ -105,6 +118,7 @@ public class User {
             mappedBy = "userId", // mappedBy es el nombre de quien lo está mapeando a él en la otra clase
             orphanRemoval = false
     )
-    private List<Submission> submissions;
+    @Builder.Default
+    private List<Submission> submissions = new ArrayList<>();
 
 }

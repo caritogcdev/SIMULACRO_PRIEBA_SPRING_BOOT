@@ -1,9 +1,21 @@
 package com.riwi.simulacro_prueba_spring_boot.api.dto.request;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class LessonReq {
-    //  private Long lesson_id;
+    @NotBlank(message = "Title is required")
     private String lesson_title;
     private String content;
-    private Long course_id;
+    @NotNull(message = "Course is required")
+    private Long courseId;
 
 }

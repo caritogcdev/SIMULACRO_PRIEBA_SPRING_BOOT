@@ -1,11 +1,20 @@
 package com.riwi.simulacro_prueba_spring_boot.api.dto.request;
 
-import java.time.LocalDate;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class SubmissionReq {
-    // private Long submission_id;
+    @NotBlank(message = "Content is required")
     private String content;
-    private LocalDate submission_date;
-    private Long user_id;
-    private Long assignment_id;
+    @NotBlank(message = "User is required")
+    private String userId;
+    @NotBlank(message = "Assignment is required")
+    private Long assignmentId;
 }
