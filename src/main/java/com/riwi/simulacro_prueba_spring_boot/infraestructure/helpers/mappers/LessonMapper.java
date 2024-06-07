@@ -1,6 +1,7 @@
 package com.riwi.simulacro_prueba_spring_boot.infraestructure.helpers.mappers;
 
 import com.riwi.simulacro_prueba_spring_boot.api.dto.request.LessonReq;
+import com.riwi.simulacro_prueba_spring_boot.api.dto.request.LessonUpdateReq;
 import com.riwi.simulacro_prueba_spring_boot.api.dto.response.LessonResp;
 import com.riwi.simulacro_prueba_spring_boot.domain.entities.Lesson;
 import com.riwi.simulacro_prueba_spring_boot.domain.repositories.CourseRepository;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component;
 public class LessonMapper implements ILessonMapper {
 
     @Autowired
-    private final ServiceHelper helper;
+    private final ServiceHelper serviceHelper;
 
     @Autowired
     private final CourseRepository courseRepository;
@@ -29,17 +30,25 @@ public class LessonMapper implements ILessonMapper {
         return Lesson.builder()
                 .lesson_title(request.getLesson_title())
                 .content(request.getContent())
-                .courseId(this.helper.find(request.getCourseId(), courseRepository, "course" ))
+                .courseId(this.serviceHelper.find(request.getCourseId(), courseRepository, "course" ))
                 .build();
     }
 
     @Override
     public LessonResp entityToResponse(Lesson entity) {
         return LessonResp.builder()
-                .id(null)
+                .id(entity.getId())
                 .lesson_title(entity.getLesson_title())
                 .content(entity.getContent())
                 .courseId(this.courseMapper.entityToResponse(entity.getCourseId()))
+                .build();
+    }
+
+    @Override
+    public Lesson reqUpdateToEntity(LessonUpdateReq request) {
+        return Lesson.builder()
+                .lesson_title(request.getLesson_title())
+                .content(request.getContent())
                 .build();
     }
 }

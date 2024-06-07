@@ -1,8 +1,10 @@
 package com.riwi.simulacro_prueba_spring_boot.api.error_handler;
 
+import com.riwi.simulacro_prueba_spring_boot.api.dto.errors.ErrorSimpleResponse;
 import com.riwi.simulacro_prueba_spring_boot.api.dto.errors.ErrorsResponse;
 import com.riwi.simulacro_prueba_spring_boot.utils.exceptions.BadIdException;
 import com.riwi.simulacro_prueba_spring_boot.utils.exceptions.BadRoleException;
+import com.riwi.simulacro_prueba_spring_boot.utils.exceptions.NotAuthorizedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -74,5 +76,18 @@ public class ErrorsController {
                 .build();
     }
 
+    /** Manejo de errores cuando alguien con X o Y rol no está autorizado para realizar runa acción*/
+    @ExceptionHandler(NotAuthorizedException.class)
+    public ErrorSimpleResponse handlerAuthorizedError (NotAuthorizedException exception){
+        Map<String, String> errorResponse = new HashMap<>();
+
+        errorResponse.put("Error", exception.getMessage());
+
+        return ErrorSimpleResponse.builder()
+                .code(HttpStatus.FORBIDDEN.value())
+                .status(HttpStatus.FORBIDDEN.name())
+                .error(errorResponse)
+                .build();
+    }
 
 }
