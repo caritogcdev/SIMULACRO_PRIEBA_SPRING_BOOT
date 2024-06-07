@@ -1,6 +1,5 @@
 package com.riwi.simulacro_prueba_spring_boot.infraestructure.helpers.mappers;
 
-
 import com.riwi.simulacro_prueba_spring_boot.api.dto.request.UserReq;
 import com.riwi.simulacro_prueba_spring_boot.api.dto.response.UserResp;
 import com.riwi.simulacro_prueba_spring_boot.domain.entities.User;
@@ -19,7 +18,7 @@ public class UserMapper implements IUserMapper {
                 .username(request.getUsername())
                 .password(request.getPassword())
                 .email(request.getEmail())
-                .full_name(request.getFull_name())
+                .fullName(request.getFullName())
                 .role(Role.valueOf(String.valueOf(request.getRole())))
                 .build();
     }
@@ -28,7 +27,7 @@ public class UserMapper implements IUserMapper {
     public UserResp entityToResponse(User entity) {
         return UserResp.builder()
                 .id(entity.getId())
-                .full_name(entity.getFull_name())
+                .fullName(entity.getFullName())
                 .role(entity.getRole())
                 .build();
     }

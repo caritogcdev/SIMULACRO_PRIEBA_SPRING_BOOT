@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /** Helper que vamos a inyectar dentro de nuestro
- * servicio, utilizamos al anotación @Component */
+ * servicio, utilizamos la anotación @Component */
 
 @Component
 @AllArgsConstructor

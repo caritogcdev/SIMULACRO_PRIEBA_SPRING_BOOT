@@ -4,7 +4,11 @@ import com.riwi.simulacro_prueba_spring_boot.api.dto.request.CourseReq;
 import com.riwi.simulacro_prueba_spring_boot.api.dto.response.CourseResp;
 import com.riwi.simulacro_prueba_spring_boot.domain.entities.Course;
 import com.riwi.simulacro_prueba_spring_boot.infraestructure.helpers.abstract_mappers.ICourseMapper;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
+@AllArgsConstructor
 public class CourseMapper implements ICourseMapper {
     @Override
     public Course requestToEntity(CourseReq request) {

@@ -1,9 +1,7 @@
 package com.riwi.simulacro_prueba_spring_boot.infraestructure.helpers.mappers;
 
 import com.riwi.simulacro_prueba_spring_boot.api.dto.request.MessageReq;
-import com.riwi.simulacro_prueba_spring_boot.api.dto.response.CourseResp;
 import com.riwi.simulacro_prueba_spring_boot.api.dto.response.MessageResp;
-import com.riwi.simulacro_prueba_spring_boot.api.dto.response.UserResp;
 import com.riwi.simulacro_prueba_spring_boot.domain.entities.Message;
 import com.riwi.simulacro_prueba_spring_boot.domain.repositories.CourseRepository;
 import com.riwi.simulacro_prueba_spring_boot.domain.repositories.UserRepository;

@@ -37,7 +37,7 @@ public class User {
     @Column(length = 100, nullable = false)
     private String email;
     @Column(length = 100)
-    private String full_name;
+    private String fullName;
 
     // Enum
     @Column(nullable = false)

@@ -4,7 +4,11 @@ import com.riwi.simulacro_prueba_spring_boot.api.dto.request.EnrollmentReq;
 import com.riwi.simulacro_prueba_spring_boot.api.dto.response.EnrollmentResp;
 import com.riwi.simulacro_prueba_spring_boot.domain.entities.Enrollment;
 import com.riwi.simulacro_prueba_spring_boot.infraestructure.helpers.abstract_mappers.IEnrollmentMapper;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
+@AllArgsConstructor
 public class EnrollmentMapper implements IEnrollmentMapper {
     @Override
     public Enrollment requestToEntity(EnrollmentReq request) {
