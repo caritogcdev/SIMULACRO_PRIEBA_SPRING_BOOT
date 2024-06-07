@@ -65,7 +65,7 @@ public class LessonController implements ControllerBase<LessonReq, LessonResp, L
 
     //Actualizar información únicamente de lesson sin curso
 
-    @PutMapping(path = "/{lessonId}/info")
+    @PutMapping(path = "/{lessonId}/updatedInfo")
     public ResponseEntity<LessonResp> updateInfoLesson(
             @Validated @RequestBody LessonUpdateReq request,
             @PathVariable Long lessonId) {

@@ -7,5 +7,6 @@ import com.riwi.simulacro_prueba_spring_boot.domain.entities.Assignment;
 /** Puede que no se necesiten todos los mappers pero dentro de
  * cada entidad se usará al menos una vez */
 public interface IAssignmentMapper extends MapperBase<AssignmentReq, Assignment, AssignmentResp>{
+    public Assignment reqUpdateToEntity(AssignmentReq request);
 
 }

@@ -63,8 +63,8 @@ public class CourseController implements ControllerBase<CourseReq, CourseResp, L
 
     /** Métodos no sobreescritos */
 
-    // OActualizar únicamente la información del curso y no la del instructor del curso
-    @PutMapping(path = "/{courseId}/info")
+    // Actualizar únicamente la información del curso y no la del instructor del curso
+    @PutMapping(path = "/{courseId}/updatedInfo")
     public ResponseEntity<CourseResp> updateInfoCourse(
             @Validated @RequestBody CourseUpdateReq request,
             @PathVariable Long courseId)
