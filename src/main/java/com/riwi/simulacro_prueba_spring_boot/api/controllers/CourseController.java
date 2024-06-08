@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/courses")
 @AllArgsConstructor
 @Tag(name = "Courses")
-public class CourseController implements ControllerBase<CourseReq, CourseResp, Long>{
+public class CourseController implements BaseController<CourseReq, CourseResp, Long> {
 
     @Autowired
     private final ICourseService courseService;

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/lessons")
 @AllArgsConstructor
 @Tag(name = "Lessons")
-public class LessonController implements ControllerBase<LessonReq, LessonResp, Long>{
+public class LessonController implements BaseController<LessonReq, LessonResp, Long> {
 
     @Autowired
     private final ILessonService lessonService;

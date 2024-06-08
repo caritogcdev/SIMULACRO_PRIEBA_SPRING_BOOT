@@ -4,7 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 
 /** Interfaz en el controlador para facilitar su creación*/
-public interface ControllerBase <RequestDTO, ResponseDTO, ID>{
+public interface BaseController<RequestDTO, ResponseDTO, ID>{
     public ResponseEntity<ResponseDTO> create(RequestDTO request);
     public ResponseEntity<ResponseDTO> get(ID id);
     public ResponseEntity<Page<ResponseDTO>> getAll (int page, int size);

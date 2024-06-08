@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/assignments")
 @AllArgsConstructor
 @Tag(name = "Assignments")
-public class AssignmentController implements ControllerBase<AssignmentReq, AssignmentResp, Long>{
+public class AssignmentController implements BaseController<AssignmentReq, AssignmentResp, Long> {
 
     @Autowired
     private final IAssignmentService assignmentService;

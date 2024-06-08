@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/users")
 @AllArgsConstructor
 @Tag(name = "Users")
-public class UserController implements ControllerBase<UserReq, UserResp, String>{
+public class UserController implements BaseController<UserReq, UserResp, String> {
 
     @Autowired
     private final IUserService userService;
