@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-/** Acá no es necesario mapear el id de lesson, sin embargo, se hizo el mapeo */
 @Component
 @AllArgsConstructor
 public class AssignmentMapper implements IAssignmentMapper {
